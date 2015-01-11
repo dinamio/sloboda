@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/basicTemplate.xhtml">
+<ui:define name="content">
+<div class="row">
+	<div class="login-card">
+    <h1>Вход на сайт</h1><br/>
+  <h:form>
+  	<h:outputText value="#{loginBean.message}" rendered="#{loginBean.message !=null}"/>
+  	<h5>Логин</h5>
+    <h:inputText value="#{loginBean.login}" />
+    <h5>Пароль</h5>
+    <h:inputSecret value="#{loginBean.password}"/>
+    <h:commandButton value="Войти" class="login login-submit" action="#{loginBean.performLogin}">
+	</h:commandButton>
+  </h:form>
+
+  <div class="login-help">
+    <a href="#">Регистрация</a>
+  </div>
+</div>
+</div>
+
+</ui:define>
+</ui:composition>

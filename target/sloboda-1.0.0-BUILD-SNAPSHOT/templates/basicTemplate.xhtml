@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="no-js" lang="en"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width"/>
+<title>
+	<h:outputText value="#{msg['home.page.title']}" />
+</title>
+<!-- CSS Files-->
+<link rel="stylesheet" href="resources/stylesheets/style.css"/>
+<link rel="stylesheet" href="resources/stylesheets/homepage.css"/><!-- homepage stylesheet -->
+<link rel="stylesheet" href="resources/stylesheets/blog.css"/><!-- blog stylesheet -->
+<link rel="stylesheet" href="resources/stylesheets/skins/teal.css"/><!-- skin color -->
+<link rel="stylesheet" href="resources/stylesheets/responsive.css"/>
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->    
+</head>
+<body>
+<!-- HEADER
+================================================== -->
+<div class="row">	
+		<div class="four columns">
+			<div class="logo">
+				<a href="home.xhtml"><h4><h:outputText value="#{msg['home.page.title']}" /></h4></a>
+			</div>
+		</div>
+		<div class="eight columns noleftmarg">		
+			<nav id="nav-wrap">
+				<ul class="nav-bar sf-menu">
+				
+					<li class="current">
+						<a href="home.xhtml">Главная</a>
+					</li>
+					
+					<li>
+						<a href="news.xhtml">Новости</a>
+					</li>
+					
+					<li>
+					<a href="#">Награды</a>
+						<ul>
+						<li><a href="blogpage1.html">Blog page style 1</a></li>
+						<li><a href="blogpage2.html">Blog page style 2</a></li>
+						<li><a href="blogpage3.html">Blog page style 3</a></li>
+						<li><a href="blogsinglepost.html">Single post</a></li>
+						</ul>
+					</li>
+					
+					<li>
+					<a href="#">Статистика</a>
+						<ul>
+						<li><a href="about.html">About us</a></li>
+						<li><a href="services.html">Services</a></li>						
+						</ul>
+					</li>
+					
+					<li>
+					<a href="#">Таблица</a>
+						<ul>
+						<li><a href="columns.html">Columns</a></li>
+						<li><a href="elements.html">Elements</a></li>
+						<li><a href="typography.html">Typography</a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+				</nav>
+		</div>	
+</div>
+<div class="clear">
+</div>
+
+<div class="content" style="display: #{places.showContent}">
+        <ui:insert name="content"/>
+ </div> 
+<!-- FOOOTER 
+================================================== -->
+<div id="footer">
+	<footer class="row">
+	<p class="back-top floatright">
+		<a href="#top"><span></span></a>
+	</p>
+	<div class="four columns">
+		<h1>О НАС</h1>
+		 Мини-футбольная команда друзей!
+	</div>
+	<div class="four columns">
+		<h1 class="newsmargin">ОБРАТНАЯ СВЯЗЬ</h1>
+		<div class="row collapse newsletter floatright">
+			<div class="ten mobile-three columns">
+				<input type="text" class="nomargin" placeholder="Ваш e-mail..."/>
+			</div>
+			<div class="two mobile-one columns">
+				<a href="#" class="postfix button expand">GO</a>
+			</div>
+		</div>
+	</div>
+	</footer>
+</div>
+<div class="copyright">
+	<div class="row">
+		<div class="six columns">
+			 &copy;<span class="small"> Евгений Годун 2015</span>
+		</div>
+		<div class="six columns">
+			<span class="small floatright"> dinamio@ukr.net</span>
+		</div>
+	</div>
+</div>
+<!-- JAVASCRIPTS 
+================================================== -->
+<!-- Javascript files placed here for faster loading -->
+<script src="resources/javascripts/foundation.min.js"></script>   
+<script src="resources/javascripts/jquery.easing.1.3.js"></script>
+<script src="resources/javascripts/elasticslideshow.js"></script>
+<script src="resources/javascripts/jquery.carouFredSel-6.0.5-packed.js"></script>
+<script src="resources/javascripts/jquery.cycle.js"></script>
+<script src="resources/javascripts/app.js"></script>
+<script src="resources/javascripts/modernizr.foundation.js"></script>
+<script src="resources/javascripts/slidepanel.js"></script>
+<script src="resources/javascripts/scrolltotop.js"></script>
+<script src="resources/javascripts/hoverIntent.js"></script>
+<script src="resources/javascripts/superfish.js"></script>
+<script src="resources/javascripts/responsivemenu.js"></script>
+<script src="resources/javascripts/jquery.tweet.js"></script>
+<script src="resources/javascripts/twitterusername.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.colorme {color:#ff0000;}
+.nav-bar > li:hover, .nav-bar > li a:hover  { color: #749f93;}
+.nav-bar > li.active > a { }
+ul.flyout li a:hover, .nav-bar li ul li a:hover {color:#749f93;}
+.flyout {border-top:2px solid #ff0000;}
+.sectiontitle {border-left: 4px solid #ff0000;}
+::-moz-selection{background:#ff0000;color:#fff;}
+::selection{background:#ff0000;color:#fff;}
+.ca-menu li:hover .ca-main {color: #ff0000;}
+.topborder { border-top:4px solid #ff0000;}
+.readmore {background:#ff0000;}
+ #subheader {background: #ff0000;border-top: 1px solid #ff0000; color: #eee;}
+ #subheader a {color: #eee;}
+ #subheader a:hover {color: #fff;}
+ .readmore {background:#ff0000;}
+ #testimonials blockquote cite {color:#ff0000;}
+ .tags {background:#ff0000;}
+ ul.pagination li.current a {background: #ff0000;}
+.saymore {color:#ff0000;}
+.submit {background:#ff0000;} 
+dl.tabs dd.active { border-bottom: 3px solid #ff0000;}
+ul.accordion > li.active {border-top: 3px solid #ff0000;}
+div.alert-box.default { background-color: #ff0000;}
+.slide {	margin: 0;	padding: 0;	border-top: solid 4px #ff0000;}
+.btn-slide {	background:#ff0000 url(../../images/plus.png) no-repeat;}
+.btn-slide.active { background: #ff0000 url(../../images/minus.png) no-repeat;}
+#footer {border-top:#ff0000 4px solid;}
+.back-top a:hover{background-color: #ff0000;}
+.sf-shadow ul {border-top:2px solid #ff0000;}
+.panel {border-left:4px solid #ff0000;}
+.colorbackground {background:#ff0000;}
+#testimonials {border-left: solid 6px #ff0000;}
+.ei-title h2{background:#ff0000;}

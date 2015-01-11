@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/basicTemplate.xhtml">
+<ui:define name="content">
+<div id="ei-slider" class="ei-slider">
+	<ul class="ei-slider-large">
+		<ui:repeat var="photo" value="#{photoBean.photosGallery}">
+			<li>
+			<img src="#{photo.path}" alt="image01" class="responsiveslide"/>
+			<div class="ei-title">
+				<h2>#{photo.description}</h2>
+			</div>
+			</li>
+		</ui:repeat>
+	</ul>
+	<!-- slider-thumbs -->
+	<ul class="ei-slider-thumbs">
+		<li class="ei-slider-element">Current</li>
+		<ui:repeat var="photo" value="#{photoBean.photosGallery}">
+			<li><a href="#">Slide</a><img src="#{photo.path}" class="slideshowthumb" alt="thumb01"/></li>
+		</ui:repeat>
+	</ul>	
+</div>
+<div class="minipause">
+</div>
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 "Игра забывается, а результат остается в истории" - Валерий Лобановский
+			</p>
+		</div>
+	</div>
+</div>
+<!-- CONTENT 
+================================================== -->
+<div class="row">
+	<div class="twelve columns">
+		<div class="centersectiontitle">
+			<h4>Новости</h4>
+		</div>
+	</div>
+	<ui:repeat var="news" value="#{newsBean.newsForHome}">
+	<div class="four columns">
+		<h5>#{news.title}</h5>
+		<p>
+			 <h:outputText value="#{news.shortText}" escape="false"/>
+		</p>
+		<p>
+			<h:commandButton value="Больше" class="readmore" action="#{articleBean.action}">
+				<f:param name="param" value="#{news}"/>
+			</h:commandButton>
+		</p>
+	</div>
+	</ui:repeat>
+</div>
+<div class="hr">
+</div>
+<!-- TESTIMONIALS 
+================================================== -->
+<div class="row">
+	<div class="twelve columns">
+		<div id="testimonials">
+			<blockquote>
+				<p>
+					 "Некоторые считают, что футбол - дело жизни и смерти. Они ошибаются: футбол гораздо важнее." <cite>Билл Шенкли</cite>
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					 "Люби не себя в футболе, а футбол в себе." <cite>Хави</cite>
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					 "Кто придумал легкие сигареты, ими нихрена не накуриваешься." <cite>Артем Милевский</cite>
+				</p>
+			</blockquote>
+		</div>
+		<!--end testimonials-->
+	</div>
+</div>
+
+</ui:define>
+</ui:composition>

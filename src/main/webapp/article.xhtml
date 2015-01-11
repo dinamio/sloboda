@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/basicTemplate.xhtml">
+<ui:define name="content">
+<div class="row">
+	<div class="twelve columns noleftmargin">
+	     <!-- MAIN CONTENT -->
+		<div class="eight columns">
+			<div class="sectiontitle">
+				<h4>#{articleBean.currentArticle.title}</h4>
+			</div>
+			<p>
+				<img src="#{articleBean.currentArticle.photo.path}" class="blogimage" alt=""/>
+			</p>
+				<h:outputText value="#{articleBean.currentArticle.text}" escape="false"/>
+			<br/>			
+			<div class="panel">
+				<div class="avatar">
+					<img src="resources/images/temp/author1.png" alt=""/>
+				</div>
+				<h5 class="left">АВТОР: #{articleBean.currentArticle.author.login}</h5>
+			<div class="right">			
+		</div>
+		<p class="clear authortext">
+		</p>
+			</div>			
+			<h5>#{articleBean.currentArticle.commentsSize} Comment</h5>
+			<hr/>
+			<ui:repeat var="comment" value="#{articleBean.currentArticle.comments}">
+			<div class="gravatar">
+				<img src="resources/images/gravatar.png" alt=""/>
+			</div>
+			<h5>#{comment.author.login}
+			<span class="commentdate">
+				#{comment.createdDate}
+			</span>
+			</h5>
+				<h:outputText value="#{comment.text}" escape="false"/>
+				<br class="clear"/>
+				<br class="clear"/>
+			</ui:repeat>
+			
+			<h5>SPEAK YOUR MIND</h5>		
+			<input type="text" class="five smoothborder" placeholder="Your name *"/>			
+			<input type="text" class="five smoothborder" placeholder="E-mail address *"/>			
+			<input type="text" class="five smoothborder" placeholder="Website"/>			
+			<textarea class="six smoothborder" rows="7" placeholder="Comments *"></textarea>
+			<button type="submit" class="readmore">Publish</button>
+		</div>
+		 <!-- SIDEBAR -->
+		<div class="four columns">
+			<h6 class="sidebartitle">RECENT COMMENTS</h6>
+			<div class="avatar">
+				<img src="resources/images/temp/author1.png" alt=""/>
+			</div>
+			<p>
+				 Many pieces were proposed, but none seemed suitable, because each one wished to play a good ...
+			</p>
+			<div class="avatar">
+				<img src="resources/images/temp/author2.png" alt=""/>
+			</div>
+			<p>
+				 Many pieces were proposed, but none seemed suitable, because each one wished to play a good ...
+			</p>
+			<div class="avatar">
+				<img src="resources/images/temp/author3.png" alt=""/>
+			</div>
+			<p>
+				 Many pieces were proposed, but none seemed suitable, because each one wished to play a good ...
+			</p>
+			<br class="clear"/>
+			<h6 class="sidebartitle">POPULAR TAGS</h6>
+			<a href="#" class="tags">Photography</a>
+			<a href="#" class="tags">Vintage</a>
+			<a href="#" class="tags">Nature</a>
+			<a href="#" class="tags">Design</a>
+			<a href="#" class="tags">Printing</a>
+			<a href="#" class="tags">Contemporary</a>
+			<a href="#" class="tags">Classic</a>
+			<a href="#" class="tags">Elegant</a>
+			<a href="#" class="tags">Graphics</a>
+			<br class="clear"/>
+			<br/><br/>
+			<h6 class="sidebartitle">RELATED POSTS</h6>
+			<p>
+				7 Oct 2013
+			</p>
+			<p>
+				Many pieces were proposed, but none seemed suitable, because each one wished to play a good and suitable part ...
+			</p>
+			<p>
+				6 Sept 2013
+			</p>
+			<p>
+				It was ready for production, when through accident we were disappointed about securing the private theatre on ...
+			</p>
+			<p>
+				4 Aug 2013
+			</p>
+			<p>
+				The over-kind praise which it won encouraged me to have the play printed. I decided, as I could see no other prospects...
+			</p>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+</ui:define>
+</ui:composition>
