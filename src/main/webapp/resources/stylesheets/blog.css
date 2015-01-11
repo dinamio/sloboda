@@ -15,5 +15,7 @@ a.tags, .tags a {color:#fff;}
 .comments {float:right;font-family:BitterItalic;font-size:11px;font-weight:normal;color:#888;margin-top:10px;}
 .authortext {padding-top:10px;overflow: hidden;}
 .gravatar {margin-right:20px;float:left;}
+.newsphoto {width:200px;margin-right:20px;float:left;}
+.articlephoto {width:300px;margin-right:20px;float:left;}
 .commentdate {margin-bottom:7px;color:#aaa;font-size:13px;}
 #subheader {padding:22px 50px 23px 50px !important;}

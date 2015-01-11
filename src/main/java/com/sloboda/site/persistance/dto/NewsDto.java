@@ -32,7 +32,7 @@ public class NewsDto {
 	
 	@ManyToOne
 	@JoinColumn(name = "photo_id")
-	private PhotoNewsDto photoNews;
+	private PhotoDto photo;
 	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
@@ -65,12 +65,12 @@ public class NewsDto {
 		this.text = text;
 	}
 
-	public PhotoNewsDto getPhotoNews() {
-		return photoNews;
+	public PhotoDto getPhoto() {
+		return photo;
 	}
 
-	public void setPhotoNews(PhotoNewsDto photoNews) {
-		this.photoNews = photoNews;
+	public void setPhoto(PhotoDto photo) {
+		this.photo = photo;
 	}
 
 	public Date getCreatedDate() {

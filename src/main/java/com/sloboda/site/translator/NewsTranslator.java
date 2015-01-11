@@ -40,7 +40,7 @@ public class NewsTranslator {
 		commentTranlator.fromDtoSet(dto.getComments(),comments);
 		entity.setComments(comments);
 		Photo photo = new Photo();
-		photoTranslator.fromPhotoNewsDto(dto.getPhotoNews(), photo);
+		photoTranslator.fromDto(dto.getPhoto(), photo);
 		entity.setPhoto(photo);
 		User author = new User();
 		userTranslator.fromDto(dto.getAuthor(), author);

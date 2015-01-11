@@ -7,16 +7,16 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.sloboda.site.persistance.HibernateUtil;
-import com.sloboda.site.persistance.dto.PhotoDto;
+import com.sloboda.site.persistance.dto.MainPhotoDto;
 
 @Repository
 public class PhotoDaoImpl implements PhotoDao {
 
 	@Override
-	public List<PhotoDto> getAllPhotos() {
+	public List<MainPhotoDto> getAllPhotos() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Query q = session.createQuery("select p from " + PhotoDto.class.getName() + " p");
-		List<PhotoDto> resultList = q.list();
+		Query q = session.createQuery("select p from " + MainPhotoDto.class.getName() + " p");
+		List<MainPhotoDto> resultList = q.list();
 		return resultList;
 	}
 

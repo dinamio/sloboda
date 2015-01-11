@@ -19,7 +19,7 @@
 			<h4>#{article.title}<span class="comments">#{article.commentsSize} comments</span></h4>
 			<div class="dots blogdots"></div>
 			<p>
-				<img src="#{article.photo.path}" class="gravatar"/>
+				<img src="#{article.photo.path}" class="newsphoto"/>
 				<h:outputText value="#{article.longText}" escape="false"/>
 				<h:form>
 					<h:commandLink value="Читать дальше" class="saymore" action="goToArticle">

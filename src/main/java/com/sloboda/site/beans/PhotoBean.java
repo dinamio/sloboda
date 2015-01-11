@@ -4,13 +4,11 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.sloboda.site.entity.Photo;
+import com.sloboda.site.entity.MainPhoto;
 import com.sloboda.site.service.PhotoService;
 
 @ManagedBean
@@ -18,12 +16,10 @@ import com.sloboda.site.service.PhotoService;
 @Scope("request")
 public class PhotoBean {
 	
-	private static final Logger logger = LoggerFactory.getLogger(PhotoBean.class);
-	
 	@Autowired
 	private PhotoService photoService;
 	
-	public List<Photo> getPhotosGallery() {
+	public List<MainPhoto> getPhotosGallery() {
 		return photoService.getPhotosForMain();
 	}
 

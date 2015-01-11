@@ -10,7 +10,7 @@
 	<ul class="ei-slider-large">
 		<ui:repeat var="photo" value="#{photoBean.photosGallery}">
 			<li>
-			<img src="#{photo.path}" alt="image01" class="responsiveslide"/>
+			<img src="#{photo.photo.path}" alt="image01" class="responsiveslide"/>
 			<div class="ei-title">
 				<h2>#{photo.description}</h2>
 			</div>
@@ -21,7 +21,7 @@
 	<ul class="ei-slider-thumbs">
 		<li class="ei-slider-element">Current</li>
 		<ui:repeat var="photo" value="#{photoBean.photosGallery}">
-			<li><a href="#">Slide</a><img src="#{photo.path}" class="slideshowthumb" alt="thumb01"/></li>
+			<li><a href="#">Slide</a><img src="#{photo.photo.path}" class="slideshowthumb" alt="thumb01"/></li>
 		</ui:repeat>
 	</ul>	
 </div>

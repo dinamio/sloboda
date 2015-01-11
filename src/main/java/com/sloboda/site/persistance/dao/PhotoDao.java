@@ -2,11 +2,9 @@ package com.sloboda.site.persistance.dao;
 
 import java.util.List;
 
-
-import com.sloboda.site.persistance.dto.PhotoDto;
-
+import com.sloboda.site.persistance.dto.MainPhotoDto;
 
 public interface PhotoDao {
 
-	List<PhotoDto> getAllPhotos();
+	List<MainPhotoDto> getAllPhotos();
 }
