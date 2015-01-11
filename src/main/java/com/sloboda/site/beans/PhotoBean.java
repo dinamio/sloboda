@@ -2,7 +2,6 @@ package com.sloboda.site.beans;
 
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.sloboda.site.controller.HomeController;
 import com.sloboda.site.entity.Photo;
 import com.sloboda.site.service.PhotoService;
 
