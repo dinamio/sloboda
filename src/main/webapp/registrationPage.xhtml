@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/basicTemplate.xhtml">
+<ui:define name="content">
+<div class="row">
+	<div class="twelve columns noleftmargin">
+	     <!-- MAIN CONTENT -->
+		 <br class="clear"/>
+			<h3>Регистрация</h3>		
+		 <div class="twelve columns">
+		 <h:form id="form" enctype="multipart/form-data">
+		 	<p:messages id="messages" display="text" autoUpdate="true" closable="true" />
+			Логин*: <p:inputText id="login" value="#{registrationBean.user.login}" required="true" styleClass="five smoothborder" label="required" requiredMessage="Поле логин должно быть заполнена" />
+			Пароль*:<p:password id="pwd1" value="#{registrationBean.user.password}" match="pwd2" required="true" styleClass="five smoothborder" requiredMessage="Поле пароль должно быть заполнено"/>
+			Подтверждение пароля*:<p:password id="pwd2" value="#{registrationBean.user.password}" required="true" styleClass="five smoothborder" requiredMessage="Поле повтор пароля должно быть заполнено"/>
+			Имя*:<p:inputText id="name" value="#{registrationBean.user.name}" required="true" styleClass="five smoothborder" requiredMessage="Поле имя должно быть заполнено"/>
+			Фамилия*:<p:inputText id="surname" value="#{registrationBean.user.surname}" required="true" styleClass="five smoothborder" requiredMessage="Поле фамилия должно быть заполнено"/>
+			e-mail*:<p:inputText id="mail" value="#{registrationBean.user.email}" required="true" styleClass="five smoothborder" requiredMessage="Поле e-mail должно быть заполнено"/>
+			Аватар: <br/>
+			<br/>
+			
+ 		    <p:fileUpload value="#{registrationBean.file}" mode="simple" skinSimple="true"/>
+ 		    <h:commandButton value="Зарегистрироваться" action="#{registrationBean.submit}"></h:commandButton>
+ 		    
+ 				   
+		</h:form>
+		</div>
+		 
+	</div>
+</div>
+<div class="hr">
+</div>
+
+</ui:define>
+</ui:composition>

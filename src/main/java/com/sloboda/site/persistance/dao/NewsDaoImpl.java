@@ -19,6 +19,7 @@ public class NewsDaoImpl implements NewsDao {
 		q.setFirstResult(0);
 		q.setMaxResults(3);
 		List<NewsDto> resultList = q.list();
+		session.close();
 		return resultList;
 
 	}
@@ -28,6 +29,7 @@ public class NewsDaoImpl implements NewsDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query q = session.createQuery("select p from " + NewsDto.class.getName() + " p order by p.createdDate desc");
 		List<NewsDto> resultList = q.list();
+		session.close();
 		return resultList;
 	}
 

@@ -1,8 +1,8 @@
 package com.sloboda.site.persistance.dto;
 
 import java.util.Date;
-import java.util.Set;
-
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,16 +30,16 @@ public class NewsDto {
 	@Column(name = "created_date")
 	private Date createdDate;
 	
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.ALL} )
 	@JoinColumn(name = "photo_id")
 	private PhotoDto photo;
 	
-	@ManyToOne
+	@ManyToOne ( cascade = {CascadeType.ALL} )
 	@JoinColumn(name = "author_id")
 	private UserDto author;
 	
 	@OneToMany(mappedBy="news")
-	private Set<CommentDto> comments;
+	private List<CommentDto> comments;
 
 	public Long getId() {
 		return id;
@@ -81,11 +81,11 @@ public class NewsDto {
 		this.createdDate = createdDate;
 	}
 
-	public Set<CommentDto> getComments() {
+	public List<CommentDto> getComments() {
 		return comments;
 	}
 
-	public void setComments(Set<CommentDto> comments) {
+	public void setComments(List<CommentDto> comments) {
 		this.comments = comments;
 	}
 

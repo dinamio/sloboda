@@ -17,8 +17,28 @@ public class UserDaoImpl implements UserDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query q = session.createQuery("select p from " + UserDto.class.getName() + " p where login='"+login+"' and password ='"+password+"'");
 		List<UserDto> resultList = q.list();
+		session.close();
 		if (resultList.size()==1) return resultList.get(0);
 		return null;
+	}
+
+	@Override
+	public void save(UserDto user) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(user);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public Boolean isUserExist(String login) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query q = session.createQuery("select p from " + UserDto.class.getName() + " p where login='"+login+"'");
+		List<UserDto> resultList = q.list();
+		session.close();
+		if (resultList.size()==1) return true;
+		return false;
 	}
 
 }

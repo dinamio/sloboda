@@ -9,6 +9,8 @@ public class Comment {
 		private User author;
 		
 		private Date createdDate;
+		
+		private News article;
 
 		public String getText() {
 			return text;
@@ -32,5 +34,13 @@ public class Comment {
 
 		public void setCreatedDate(Date createdDate) {
 			this.createdDate = createdDate;
+		}
+
+		public News getArticle() {
+			return article;
+		}
+
+		public void setArticle(News article) {
+			this.article = article;
 		}
 }

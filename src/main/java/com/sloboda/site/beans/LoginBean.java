@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sloboda.site.entity.User;
-import com.sloboda.site.service.AuthService;
+import com.sloboda.site.service.UserService;
 
 @ManagedBean
 @Component
@@ -24,10 +24,10 @@ public class LoginBean {
 	private UserBean userBean;
 	
 	@Autowired 
-	private AuthService authService;
+	private UserService userService;
 	
 	public String performLogin() {
-		User user = authService.getAuthenticatedUser(login, password);
+		User user = userService.getAuthenticatedUser(login, password);
 		message=null;
 		if (user==null) {
 			login=null;

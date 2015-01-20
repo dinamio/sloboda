@@ -3,6 +3,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	template="/templates/basicTemplate.xhtml">
 <ui:define name="content">
 <div class="row">
@@ -29,26 +30,29 @@
 			</div>			
 			<h5>#{articleBean.currentArticle.commentsSize} Comment</h5>
 			<hr/>
-			<ui:repeat var="comment" value="#{articleBean.currentArticle.comments}">
-			<div class="gravatar">
-				<img src="resources/images/gravatar.png" alt=""/>
-			</div>
-			<h5>#{comment.author.login}
-			<span class="commentdate">
-				#{comment.createdDate}
-			</span>
-			</h5>
-				<h:outputText value="#{comment.text}" escape="false"/>
-				<br class="clear"/>
-				<br class="clear"/>
-			</ui:repeat>
-			
+			<h:panelGroup id="commentsGroup">
+				<ui:repeat var="comment" value="#{articleBean.currentArticle.comments}">
+				<div class="gravatar">
+					<img src="resources/images/gravatar.png" alt=""/>
+				</div>
+				<h5>#{comment.author.login}
+				<span class="commentdate">
+					#{comment.createdDate}
+				</span>
+				</h5>
+					<h:outputText value="#{comment.text}" escape="false"/>
+					<br class="clear"/>
+					<br class="clear"/>
+				</ui:repeat>
+			</h:panelGroup>
+			<h:form rendered="#{userBean.user!=null}">
 			<h5>SPEAK YOUR MIND</h5>		
-			<input type="text" class="five smoothborder" placeholder="Your name *"/>			
-			<input type="text" class="five smoothborder" placeholder="E-mail address *"/>			
-			<input type="text" class="five smoothborder" placeholder="Website"/>			
-			<textarea class="six smoothborder" rows="7" placeholder="Comments *"></textarea>
-			<button type="submit" class="readmore">Publish</button>
+			 	<h:message for="commentText" style="color : red;"/>
+				<h:inputTextarea id="commentText" class="six smoothborder" rows="7" value="#{articleBean.comment.text}" 
+				required="true" label="required" requiredMessage="Эй! Постой! Комментарий НЕ должен быть ПУСТОЙ!:)" />
+				<h:commandButton type="submit" value = "Отправить" class="readmore"  action="#{articleBean.addComment}">
+				</h:commandButton>
+			</h:form>
 		</div>
 		 <!-- SIDEBAR -->
 		<div class="four columns">

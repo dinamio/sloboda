@@ -2,6 +2,7 @@ package com.sloboda.site.persistance.dto;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name="comments")
+
+
 @Entity
+@Table(name="comments")
 public class CommentDto {
 	
 	@GeneratedValue
@@ -25,11 +28,11 @@ public class CommentDto {
 	@Column(name="created_date")
 	private Date createdDate;
 	
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.ALL} )
 	@JoinColumn(name = "user_id")
 	private UserDto user;
 	
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.ALL} )
 	@JoinColumn(name = "news_id")
 	private NewsDto news;
 
@@ -63,5 +66,15 @@ public class CommentDto {
 
 	public void setUser(UserDto user) {
 		this.user = user;
+	}
+	
+	public NewsDto getArticle()
+	{
+		return news;
+	}
+	
+	public void setArticle(NewsDto news)
+	{
+		this.news = news;
 	}
 }

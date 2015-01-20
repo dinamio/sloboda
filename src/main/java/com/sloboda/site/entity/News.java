@@ -5,6 +5,8 @@ import java.util.List;
 
 public class News {
 	
+	private Long id;
+	
 	private Photo photo;
 	
 	private String title;
@@ -63,7 +65,7 @@ public class News {
 		this.comments = comments;
 	}
 	public String getDateForNews() {
-		String months[] = {"Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"};
+		String months[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 		StringBuilder builder = new StringBuilder();
 		builder.append("- ");
 		if (createdDate.getDate()<10) builder.append('0');
@@ -89,5 +91,11 @@ public class News {
 		this.author = author;
 	}
 	
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}	
 }

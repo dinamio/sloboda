@@ -21,6 +21,7 @@ public class PhotoTranslator{
 	}
 	
 	public void fromDto(PhotoDto dto, Photo entity){
+		entity.setId(dto.getId());
 		entity.setPath(dto.getPath());
 	}
 	
@@ -29,5 +30,18 @@ public class PhotoTranslator{
 		fromDto(dto.getPhoto(),photo);
 		entity.setPhoto(photo);
 		entity.setDescription(dto.getDescription());
+	}
+	
+	public void toDto(Photo entity, PhotoDto dto){
+		dto.setId(entity.getId());
+		dto.setPath(entity.getPath());
+	}
+	
+	public void toDto(MainPhoto entity, MainPhotoDto dto)
+	{
+		dto.setDescription(entity.getDescription());
+		PhotoDto photoDto = new PhotoDto();
+		toDto(entity.getPhoto(),photoDto);
+		dto.setPhoto(photoDto);
 	}
 }
