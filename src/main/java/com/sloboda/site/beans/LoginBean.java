@@ -32,7 +32,7 @@ public class LoginBean {
 		if (user==null) {
 			login=null;
 			password=null;
-			setMessage("Неправильный логин и/или пароль");
+			setMessage("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ/РїР°СЂРѕР»СЊ");
 			return "failure";
 		}
 		userBean.setUser(user);

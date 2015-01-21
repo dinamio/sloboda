@@ -54,14 +54,14 @@ public class RegistrationBean {
 
 	public String submit() {
 		if (userDao.isUserExist(user.getLogin())) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Пользователь с таким именем уже существует", ""));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚", ""));
 			 return "";
 		}
 		if (file != null) {
 			insertCopyOfFile();
 		}
 		userService.insertUser(user);
-		loginBean.setMessage("Регистрация прошла успешно");
+		loginBean.setMessage("Р РµРіРёСЃС‚СЂР°С†РёСЏ СѓСЃРїРµС€РЅР°!");
 		return "success";
 	}
 	

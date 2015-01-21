@@ -8,15 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.sloboda.site.entity.Comment;
 import com.sloboda.site.entity.News;
-import com.sloboda.site.entity.User;
-import com.sloboda.site.service.CommentService;
 import com.sloboda.site.service.NewsService;
-
-
-
-
 
 @ManagedBean
 @Component

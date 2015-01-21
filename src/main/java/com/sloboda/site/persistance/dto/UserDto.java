@@ -1,9 +1,12 @@
 package com.sloboda.site.persistance.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,10 @@ public class UserDto {
 	
 	@Column(name = "surname")
 	private String surname;
+	
+	@ManyToOne( cascade = {CascadeType.ALL} )
+	@JoinColumn(name = "avatar_id")
+	private PhotoDto avatar;
 
 	public Long getId() {
 		return id;
@@ -76,6 +83,14 @@ public class UserDto {
 	
 	public String getSurname() {
 		return surname;
+	}
+
+	public PhotoDto getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(PhotoDto avatar) {
+		this.avatar = avatar;
 	}
 	
 }

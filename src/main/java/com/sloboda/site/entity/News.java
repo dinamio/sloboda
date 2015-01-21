@@ -65,7 +65,7 @@ public class News {
 		this.comments = comments;
 	}
 	public String getDateForNews() {
-		String months[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+		String months[] = {"Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"};
 		StringBuilder builder = new StringBuilder();
 		builder.append("- ");
 		if (createdDate.getDate()<10) builder.append('0');

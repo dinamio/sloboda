@@ -46,15 +46,24 @@
   		<param-value>commons</param-value>
 	</context-param>
 	<filter>
- <filter-name>PrimeFaces FileUpload Filter</filter-name>
- <filter-class>
-  org.primefaces.webapp.filter.FileUploadFilter
- </filter-class>
-</filter>
-<filter-mapping>
- <filter-name>PrimeFaces FileUpload Filter</filter-name>
- <servlet-name>Faces Servlet</servlet-name>
-</filter-mapping>
+ 		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+ 		<filter-class>
+  			org.primefaces.webapp.filter.FileUploadFilter
+ 		</filter-class>
+	</filter>
+	<filter-mapping>
+ 	<filter-name>PrimeFaces FileUpload Filter</filter-name>
+ 		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+	<filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>com.sloboda.site.configuration.CharacterEncodingFilter</filter-class>
+    </filter>
+    <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
 	<listener>
     	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   	</listener>
