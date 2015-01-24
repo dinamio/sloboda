@@ -30,23 +30,20 @@
 			</div>			
 			<h5>#{articleBean.currentArticle.commentsSize} Comment</h5>
 			<hr/>
-			<h:panelGroup id="commentsGroup">
-				<ui:repeat var="comment" value="#{articleBean.currentArticle.comments}">
-				<div class="gravatar">
-					<img src="resources/images/gravatar.png" alt=""/>
-				</div>
+			<p:dataScroller value="#{articleBean.currentArticle.comments}" var="comment" type="ordered" rendered="#{not empty articleBean.currentArticle.comments}" rows="10" chunkSize="10" >
+				<f:facet name="header">Комментарии</f:facet>
+      				<div class="gravatar"><img src="#{comment.author.avatar.path}" width="100" height="100" alt=""/></div>
 				<h5>#{comment.author.login}
-				<span class="commentdate">
-					#{comment.createdDate}
-				</span>
+					<h:outputText value="#{comment.createdDate}" class="commentdate">
+						<f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+					</h:outputText>
 				</h5>
-					<h:outputText value="#{comment.text}" escape="false"/>
-					<br class="clear"/>
-					<br class="clear"/>
-				</ui:repeat>
-			</h:panelGroup>
+		        <h:outputText value="#{comment.text}" escape="false"/>
+		        <br class="clear"/>
+				<br class="clear"/>
+			</p:dataScroller>
 			<h:form rendered="#{userBean.user!=null}">
-			<h5>SPEAK YOUR MIND</h5>		
+			<h5>Ваш комментарий</h5>			
 			 	<h:message for="commentText" style="color : red;"/>
 				<h:inputTextarea id="commentText" class="six smoothborder" rows="7" value="#{articleBean.comment.text}" 
 				required="true" label="required" requiredMessage="Эй! Постой! Комментарий НЕ должен быть ПУСТОЙ!:)" />

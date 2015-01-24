@@ -61,11 +61,15 @@ public class ArticleBean {
 		comment.setCreatedDate(createdDate);
 		commentService.save(comment);
 		updateComments();
-		comment = new Comment();
+		comment = null;
 	}
-	
+		
 	public Comment getComment()
 	{
+		if(comment == null)
+		{
+			comment = new Comment();
+		}
 		return comment;
 	}
 	public void setComment(Comment comment)
