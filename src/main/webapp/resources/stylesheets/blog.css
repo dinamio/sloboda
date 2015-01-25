@@ -19,3 +19,12 @@ a.tags, .tags a {color:#fff;}
 .articlephoto {width:300px;margin-right:20px;float:left;}
 .commentdate {margin-bottom:7px;color:#aaa;font-size:13px;}
 #subheader {padding:22px 50px 23px 50px !important;}
+
+.ui-datascroller-content
+{
+	border-style: none;
+}
+.ui-datascroller-item
+{
+	margin-bottom: 20px;
+}

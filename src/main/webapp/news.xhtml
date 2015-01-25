@@ -4,44 +4,36 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/templates/basicTemplate.xhtml">
 <ui:define name="content">
 <div class="row">
 	<div class="twelve columns noleftmargin">
 	    <!-- MAIN CONTENT -->
 		<div class="eight columns noleftmargin">
-			<ui:repeat var="article" value="#{newsBean.allNews}">
-			<div class="circledate">
+			
+		<p:dataScroller value="#{newsBean.allNews}" var="article" rows="10" chunkSize="10">
+		    <div class="circledate">
 				<div class="textcircle">
 					<h:outputText value="#{article.dateForNews}" escape="false"></h:outputText>
 				</div>
 			</div>
-			<h4>#{article.title}<span class="comments">#{article.commentsSize} comments</span></h4>
-			<div class="dots blogdots"></div>
-			<p>
-				<img src="#{article.photo.path}" class="newsphoto"/>
-				<h:outputText value="#{article.longText}" escape="false"/>
-				<h:form>
-					<h:commandLink value="Читать дальше" class="saymore" action="goToArticle">
-					<f:setPropertyActionListener target="#{articleBean.currentArticle}" value="#{article}" />
-					</h:commandLink>
-				</h:form> 
-			</p>
 			
-			<div class="hr">
-			</div>
-			</ui:repeat>
-			<ul class="pagination">
-				<li class="arrow unavailable"><a href="">&laquo;</a></li>
-				<li class="current"><a href="">1</a></li>
-				<li><a href="">2</a></li>
-				<li><a href="">3</a></li>
-				<li><a href="">4</a></li>
-				<li class="unavailable"><a href="">&hellip;</a></li>
-				<li><a href="">12</a></li>
-				<li><a href="">13</a></li>
-				<li class="arrow"><a href="">&raquo;</a></li>
-			</ul>
+			<p:panel>
+				<h4>#{article.title}<span class="comments">#{article.commentsSize} comments</span></h4>
+				<div class="dots blogdots"></div>
+				<p>
+					<img src="#{article.photo.path}" class="newsphoto"/>
+					<h:outputText value="#{article.longText}" escape="false"/>
+				</p>
+				<h:form>
+					<h:commandLink value="Читать дальше" class="readmore" action="goToArticle">
+						<f:setPropertyActionListener target="#{articleBean.currentArticle}" value="#{article}" />
+					</h:commandLink>
+				</h:form>
+			</p:panel>
+		 </p:dataScroller>
+		
 		</div>
 		<!-- SIDEBAR -->
 		<div class="four columns">
