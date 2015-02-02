@@ -1,8 +1,46 @@
-create database sloboda_db;
+create database sloboda_db character set utf8 collate utf8_unicode_ci;
+
+CREATE TABLE sloboda_db.positions(
+id INT NOT NULL AUTO_INCREMENT,
+position VARCHAR(40) NOT NULL,
+ PRIMARY KEY (id)
+);
 
 create table sloboda_db.photos (
 id int key not null auto_increment,
 path varchar(300) not null
+);
+
+create table sloboda_db.video (
+id int not null auto_increment,
+link varchar(300),
+primary key(id)
+);
+
+CREATE TABLE sloboda_db.players(
+   id INT NOT NULL AUTO_INCREMENT,
+   number INT(100),
+   surname VARCHAR(40) NOT NULL,
+   name VARCHAR(40) NOT NULL,
+   birthday_date DATE,
+   is_rightleg bool not null,
+   is_display bool not null,
+   position_id INT(40) NOT NULL,
+   photo_id INT(40),
+   video_id int,
+   FOREIGN KEY (position_id) references positions(id),
+   FOREIGN KEY (photo_id) references photos(id),
+   FOREIGN KEY (video_id) references video(id),
+   
+   PRIMARY KEY (id)
+   
+);
+
+CREATE TABLE sloboda_db.tournaments_type(
+	id INT NOT NULL AUTO_INCREMENT,
+    tournament_type VARCHAR(40),
+    PRIMARY KEY (id)
+
 );
 
 create table sloboda_db.users (
@@ -13,6 +51,7 @@ email varchar(100) not null,
 name varchar(100)  not null,
 surname varchar(100) not null,
 avatar_id int,
+is_administrator bool,
 FOREIGN KEY (avatar_id) REFERENCES photos(id)
 ON DELETE SET NULL
 );
@@ -49,29 +88,102 @@ FOREIGN KEY (user_id) REFERENCES users(id)
 	     ON DELETE SET NULL         
 );
 
+create table sloboda_db.tournaments(
+id INT NOT NULL AUTO_INCREMENT,
+   title VARCHAR(100),
+   type_id int(40) NOT NULL,
+  start_date DATE not null,
+  end_date DATE not null,
+   place VARCHAR(100), 
+   description VARCHAR(500),
+   photo_id int(40),
+   is_print_table bool not null,
+   FOREIGN KEY (type_id) references tournaments_type(id),
+   FOREIGN KEY (photo_id) references photos(id)
+   ON DELETE SET NULL,
+   
+   PRIMARY KEY (id)
+);
 
-insert into sloboda_db.photos(path) values ('resources/img/1.jpg');
-insert into sloboda_db.photos(path) values ('resources/img/2.jpg');
-insert into sloboda_db.photos(path) values ('resources/img/3.jpg');
-insert into sloboda_db.photos(path) values ('resources/img/5.jpg');
-insert into sloboda_db.photos(path) values ('resources/images/gravatar.jpg');
-insert into sloboda_db.photos(path) values ('resources/img/news/rogan.jpg');
+create table sloboda_db.team(
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(40) NOT NULL,
+type_id int(40) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (type_id) references tournaments_type(id)
 
-insert into sloboda_db.main_photos(photo_id,description) values (1,'Пелих');
-insert into sloboda_db.main_photos(photo_id,description) values (2,'Зява');
-insert into sloboda_db.main_photos(photo_id,description) values (3,'Пильгуй');
-insert into sloboda_db.main_photos(photo_id,description) values (4,'Команда');
+);
+CREATE TABLE sloboda_db.team_tournament(
+team_id int not null,
+tournament_id int not null,
+foreign key (team_id) references team(id),
+foreign key (tournament_id) references tournaments(id)
 
-insert into sloboda_db.users(login,password,name,surname,email,avatar_id) values ('admin','admin','Евгений','Годун','dinamio@ukr.net',5);
+);
 
-insert into sloboda_db.news(title,text_news,photo_id,author_id,created_date) values ('Год начинается с сюрпризов - в 16:00 в субботу играем с "Роганью"','Костя всё-таки решил ставить тур на 3-4 января, потому так уж выходит, что 3-го (суббота) в 16:00 мы играем с "Роганью" в 4-м туре. Похмельную явку на 100%! Завтра буду всех прозванивать и очень надеюсь, что Фат это видит и читает, т.к. его телефон уже в привычной "не-зоне". Отзовись пожалуйста в комментариях! ps играем в синих футболках!',6,1,'2015-10-01');
-insert into sloboda_db.news(title,text_news,photo_id,author_id,created_date) values ('Новость 2','Костя всё-таки решил ставить тур на 3-4 января, потому так уж выходит, что 3-го (суббота) в 16:00 мы играем с "Роганью" в 4-м туре. Похмельную явку на 100%! Завтра буду всех прозванивать и очень надеюсь, что Фат это видит и читает, т.к. его телефон уже в привычной "не-зоне". Отзовись пожалуйста в комментариях! ps играем в синих футболках!',2,1,'2015-09-01');
-insert into sloboda_db.news(title,text_news,photo_id,author_id,created_date) values ('Золото универа','Вчера в 17:00 золотой гол Тимура позволил "Слободе" оформить первое в нашей истории золото Кубка Универа! 8-я лига, которая оказалась очень серьезным испытанием и дала нам хорошую встряску, всё-таки покорилась слобожанам! 
+create table sloboda_db.game(
+id int not null auto_increment,
+tournament_id int not null,
+first_team_id int not null,
+second_team_id int not null,
+goals_first int not null,
+goals_second int not null,
+game_date date not null,
+tour_number int not null,
+foreign key(tournament_id) references tournaments(id),
+foreign key(first_team_id) references team(id),
+foreign key(second_team_id) references team(id),
+primary key(id)
+);
 
-"Слобода": Завадский - Зурдунов, Пелих, Тамбиев, Тельной - Фатеев, Арсланалиев, Москалец, Авксентьев - Михайлов 
+create table sloboda_db.player_game(
+player_id int not null,
+game_id int not null,
+goals_in_game int,
+goals_missed int,
+foreign key (player_id) references players(id),
+foreign key (game_id) references game(id)
+);
+create table sloboda_db.tournament_application(
+player_id int not null,
+tournament_id int not null,
+foreign key (player_id) references players(id),
+foreign key (tournament_id) references tournaments(id)
+);
+create table sloboda_db.rewards(
+id int not null auto_increment,
+player_id int not null, 
+tournament_id int not null,
+reward varchar(100) not null,
+foreign key (player_id) references players(id),
+foreign key (tournament_id) references tournaments(id),
+primary key(id)
+);
 
-В четвертый раз за осень и в третий раз за последний месяц нам довелось играть с "Хартроном". Обе команды досконально изучили друг друга, и ожидаемо первый тайм проходил в невысоком темпе с акцентом на надежность обороны. Два полумомента было у Саши и Пелиха, но их удары прошли мимо ворот. Соперник ответил своим моментом в контратаке - также безрезультативно. По большому счету первый тайм выдался очень скупым на интересные события - мы больше владели мячом, играли первым номером, даже били свободный с 6 метров но.. 
+create table sloboda_db.game_content_photo(
+game_id int not null,
+photo_id int not null,
+foreign key (game_id) references game(id),
+foreign key (photo_id) references photos(id)
+);
 
-Во второй половине команды задвигались активнее и начали создавать моменты. Была пара панических смен, когда нас прижимали и мы теряли игроков - выстояли. А вот пропустили в итоге совершенно нелогичный мяч - зубрин пас через центр перехватил 13-й номер "Хартрона", отыграл Дениса и прицельно пробил в нижний угол - 0:1. Атаковали, давили, били - всё не заходило, и однажды за "Хартрон" сыграл каркас ворот. Особенно врезались в память момент Пелиха, который на 6-ти метрах отыграл корпусом защитника и пробил мимо, прострел Тимура на Фата, удары Саши и Зубры.. Где-то за 8 минут до конца чисто индивидуальный гол забил Гарик, на месте обыграв защитника и пробив в дальнюю девятку - 1:1. Команды стали действовать осторожнее, и развязка наступила на последней минуте. За 40 секунд до сирены "Хартрон" берет минуту на своем угловом, но разыгрывает его неудачно. Остается около 20 секунд и "Слобода" идет в свою атаку, Тимур принимает мяч спиной к воротам, разворачивается и прошивает защитника, отправляя мяч в нижний угол - 2:1 и 10 секунд до свистка. Соперники даже не стали разводить с центра. 
+create table sloboda_db.game_content_video(
+game_id int not null,
+video_id int not null,
+foreign key (game_id) references game(id),
+foreign key (video_id) references video(id)
+);
 
-Волевая победа, которая запомнится навсегда! Большое спасибо всем, кто вчера пришел - играть, поддерживать - спасибо за вчерашний матч и за весь турнир! Что-то вело нас к этой победе, и мы ее заслужили! Мои поздравления!',3,1,'2015-08-01');
+create table sloboda_db.tournament_table(
+tournament_id int not null,
+team_name varchar (100) not null,
+place int not null,
+games int not null,
+wins int not null,
+draws int not null,
+loses int not null,
+goals_scored int null,
+goals_missed int not null,
+points int not null,
+foreign key (tournament_id) references tournaments(id)
+);
