@@ -18,10 +18,10 @@ public class UserTranslator {
 		user.setId(dto.getId());
 		user.setLogin(dto.getLogin());
 		user.setPassword(dto.getPassword());
-		
 		user.setEmail(dto.getEmail());
 		user.setName(dto.getName());
 		user.setSurname(dto.getSurname());
+		user.setIsAdministrator(dto.getIsAdministrator());
 		if (dto.getAvatar() != null) {
 			Photo avatar = new Photo();
 			photoTranslator.fromDto(dto.getAvatar(), avatar);
@@ -33,7 +33,6 @@ public class UserTranslator {
 		dto.setId(user.getId());
 		dto.setLogin(user.getLogin());
 		dto.setPassword(user.getPassword());
-		
 		dto.setEmail(user.getEmail());
 		dto.setName(user.getName());
 		dto.setSurname(user.getSurname());
@@ -41,6 +40,11 @@ public class UserTranslator {
 			PhotoDto avatar = new PhotoDto();
 			photoTranslator.toDto(user.getAvatar(),avatar);
 			dto.setAvatar(avatar);
+		}
+		if (user.getIsAdministrator() != null) {
+			dto.setIsAdministrator(user.getIsAdministrator());
+		} else {
+			dto.setIsAdministrator(false);
 		}
 	}
 }

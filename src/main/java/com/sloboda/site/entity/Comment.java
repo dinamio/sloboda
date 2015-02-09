@@ -10,7 +10,7 @@ public class Comment {
 		
 		private Date createdDate;
 		
-		private News article;
+		private Article article;
 
 		public String getText() {
 			return text;
@@ -36,11 +36,11 @@ public class Comment {
 			this.createdDate = createdDate;
 		}
 
-		public News getArticle() {
+		public Article getArticle() {
 			return article;
 		}
 
-		public void setArticle(News article) {
+		public void setArticle(Article article) {
 			this.article = article;
 		}
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sloboda.site.entity.Comment;
-import com.sloboda.site.entity.News;
+import com.sloboda.site.entity.Article;
 import com.sloboda.site.entity.Photo;
 import com.sloboda.site.entity.User;
 import com.sloboda.site.persistance.dto.NewsDto;
@@ -26,15 +26,15 @@ public class NewsTranslator {
 	@Autowired
 	private UserTranslator userTranslator;
 	
-	public void fromDtoList (List<NewsDto> dtos, List<News> news) {
+	public void fromDtoList (List<NewsDto> dtos, List<Article> news) {
 		for(NewsDto dto : dtos) {
-			News entity = new News();
+			Article entity = new Article();
 			fromDto(dto,entity);
 			news.add(entity);
 		}
 	}
 	
-	public void fromDto (NewsDto dto, News entity) {
+	public void fromDto (NewsDto dto, Article entity) {
 		entity.setId(dto.getId());
 		
 		entity.setText(dto.getText().replaceAll("(\r\n|\n)", "<br />"));
@@ -55,7 +55,7 @@ public class NewsTranslator {
 		userTranslator.fromDto(dto.getAuthor(), author);
 		entity.setAuthor(author);
 	}
-	public void toDto(News entity, NewsDto dto)
+	public void toDto(Article entity, NewsDto dto)
 	{
 		dto.setId(entity.getId());
 		

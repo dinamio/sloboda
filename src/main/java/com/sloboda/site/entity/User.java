@@ -16,6 +16,8 @@ public class User {
 	
 	private Photo avatar;
 	
+	private Boolean isAdministrator;
+	
 	public String getLogin() {
 		return login;
 	}
@@ -70,5 +72,13 @@ public class User {
 
 	public void setAvatar(Photo avatar) {
 		this.avatar = avatar;
+	}
+
+	public Boolean getIsAdministrator() {
+		return isAdministrator;
+	}
+
+	public void setIsAdministrator(Boolean isAdministrator) {
+		this.isAdministrator = isAdministrator;
 	}
 }

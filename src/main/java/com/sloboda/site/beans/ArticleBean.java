@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sloboda.site.entity.Comment;
-import com.sloboda.site.entity.News;
+import com.sloboda.site.entity.Article;
 import com.sloboda.site.service.CommentService;
 
 @ManagedBean
@@ -23,7 +23,7 @@ public class ArticleBean {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ArticleBean.class);
 	
-	private News currentArticle;
+	private Article currentArticle;
 	
 	private Comment comment;
 	
@@ -45,11 +45,11 @@ public class ArticleBean {
 		return "article";
 	}
 
-	public News getCurrentArticle() {
+	public Article getCurrentArticle() {
 		return currentArticle;
 	}
 
-	public void setCurrentArticle(News currentArticle) {
+	public void setCurrentArticle(Article currentArticle) {
 		this.currentArticle = currentArticle;
 	} 
 	

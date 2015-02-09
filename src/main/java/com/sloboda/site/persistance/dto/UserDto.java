@@ -33,6 +33,9 @@ public class UserDto {
 	@Column(name = "surname")
 	private String surname;
 	
+	@Column(name = "is_administrator")
+	private Boolean isAdministrator;
+	
 	@ManyToOne( cascade = {CascadeType.ALL} )
 	@JoinColumn(name = "avatar_id")
 	private PhotoDto avatar;
@@ -93,4 +96,11 @@ public class UserDto {
 		this.avatar = avatar;
 	}
 	
+	public Boolean getIsAdministrator() {
+		return isAdministrator;
+	}
+
+	public void setIsAdministrator(Boolean isAdministrator) {
+		this.isAdministrator = isAdministrator;
+	}
 }

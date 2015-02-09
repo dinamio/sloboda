@@ -3,7 +3,7 @@ package com.sloboda.site.entity;
 import java.util.Date;
 import java.util.List;
 
-public class News {
+public class Article {
 	
 	private Long id;
 	

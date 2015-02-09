@@ -2,12 +2,12 @@ package com.sloboda.site.service;
 
 import java.util.List;
 
-import com.sloboda.site.entity.News;
+import com.sloboda.site.entity.Article;
 
 public interface NewsService {
 
-	List<News> getNewsForHome();
+	List<Article> getNewsForHome();
 
-	List<News> getAllNews();
+	List<Article> getAllNews();
 
 }

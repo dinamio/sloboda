@@ -75,6 +75,15 @@
 						</ul>
 					</li-->
 					
+					<h:panelGroup rendered="#{userBean.user.isAdministrator=='true'}">
+					<li>
+					<a href="#">Меню администратора</a>
+   						<ul>
+							<li><a href="addArticle.xhtml">Добавить новость</a></li>
+						</ul>
+					</li>
+ 					</h:panelGroup>
+					
 					<li>
 						<h:outputLink value="login.xhtml" rendered="#{userBean.user==null}">
 						Вход
