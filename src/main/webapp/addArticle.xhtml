@@ -9,26 +9,27 @@
 <ui:define name="content">
 <div class="row">
 	<div class="twelve columns noleftmargin">
-		<h:form id="form">
+		<h:form id="form" enctype="multipart/form-data">
 			<p:messages id="messages" display="text" autoUpdate="true" closable="true" />
 			Название: <p:inputText id="title" value="#{newsBean.articleToAdd.title}" required="true" styleClass="five smoothborder" label="required" requiredMessage="Название должно быть заполнена" />
 			Текст:<h:inputTextarea id="commentText" class="six smoothborder" rows="10" value="#{newsBean.articleToAdd.text}"
 			required="true" label="required" requiredMessage="Текст новости должен быть заполнен" />
-		</h:form>
-		<h:form id="photoForm">
 			<p:selectOneRadio id="console" value="#{newsBean.chooser}">
             	<f:selectItem itemLabel="Выбрать фото" itemValue="choose" />
             	<f:selectItem itemLabel="Загрузить фото" itemValue="download" />
-            	<p:ajax update="photoForm" />
+            	<p:ajax process="@this" update="fileUpload choosePhoto" />
     	    </p:selectOneRadio>
-    	     <p:fileUpload value="#{registrationBean.file}" mode="simple" skinSimple="true" rendered="#{newsBean.chooser == 'download'}"/>
-    	     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" rendered="#{newsBean.chooser == 'choose'}">
+    	     <p:fileUpload value="#{newsBean.file}" id="fileUpload" mode="simple" skinSimple="true" rendered="#{newsBean.chooser == 'download'}"/>
+    	     <h:panelGrid columns="2" style="margin-bottom:10px" id="choosePhoto" cellpadding="5" rendered="#{newsBean.chooser == 'choose'}">
     	     	<h:selectOneMenu  value="#{newsBean.chosenImage}"  onchange="submit();"	width="250" valueChangeListener="#{newsBean.photoChooseMethod}" effect="fade" var="p">  
         		    <f:selectItems value="#{newsBean.defaultPhotos}"  var="photo" itemValue="#{photo}" itemLabel="#{photo}" />  
 		  	    </h:selectOneMenu>
 		  	    <img src="resources/img/news/#{newsBean.chosenImage}" class="articlephoto" alt=""/> 
     	     </h:panelGrid>
+    	 	<h:commandButton value="Добавить новость" action="#{newsBean.submit}"></h:commandButton>    
     	 </h:form>
+    	 
+    	 
 		
 	</div>
 </div>
